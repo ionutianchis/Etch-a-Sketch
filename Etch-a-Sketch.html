@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<link rel="stylesheet" href="style.css">
+<head>
+    <title>Etch-a-Sketch</title>
+    <meta charset="UTF-8"/>
+</head>
+
+<body>
+<div id='wrapper'> 
+    <button id='reset'>Reset</button>
+    <button id='rainbow'>Rainbow</button>
+    <button id='black'>Black</button>
+
+    <div class="slidecontainer">
+      <input type="range" min="1" max="100" value = "8" class="slider" id="myRange">
+        <p>Current grid size: <span id="demo"></span></p>
+    </div>
+
+    <div id="container"></div>
+
+</div>
+<script>
+
+let container = document.querySelector("#container");
+let button = document.getElementById("reset");
+let input = document.querySelector('input');
+let currentSize = document.getElementById("myRange").value;
+let slider = document.getElementById("myRange");
+let output = document.getElementById("demo");
+let rainbowButton = document.getElementById('rainbow');
+let blackButton = document.getElementById('black');
+let removeLines = document.getElementById('removeLines');
+let rainbowButtonActive = false;
+let blackButtonActive = false;
+let removeLinesButtonActive = false;
+
+function createGrid(size){
+    container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
+    container.style.gridTemplateRows = `repeat(${size}, 1fr)`;
+    for(let i = 0;i < size*size;i++){
+        const square = document.createElement('div');
+        square.classList.add('divs');
+        container.appendChild(square);
+    }
+}
+
+output.textContent = slider.value + "x" + slider.value;
+slider.oninput = function() {
+  output.textContent = this.value + "x" + this.value;
+  createGrid(this.value);
+}
+
+function generateRandomColor() {
+  let randomColor = '#'+Math.floor(Math.random()*16777215).toString(16);
+  return randomColor;
+}
+
+container.addEventListener('mouseover', function (e) {
+  if (e.target.matches('.divs') && rainbowButtonActive === true) {
+    e.target.style.backgroundColor = generateRandomColor();
+  } else if (e.target.matches('.divs') && blackButtonActive === true) {
+      e.target.style.backgroundColor = 'black';
+  }  else if (e.target.matches('.divs')) {
+      e.target.classList.add('active');
+  } button.addEventListener("click", () => {
+      e.target.style.backgroundColor = "transparent";
+    });
+});
+
+blackButton.addEventListener("click", () => {
+  blackButtonActive = true;
+  rainbowButtonActive = false;
+});
+
+rainbowButton.addEventListener("click", () => {
+  rainbowButtonActive = true;
+  blackButtonActive = false;
+});
+
+createGrid(currentSize);
+
+
+</script>
+
+</body>
+
+
+</html>
