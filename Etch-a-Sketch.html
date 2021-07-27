@@ -16,9 +16,7 @@
       <input type="range" min="1" max="100" value = "8" class="slider" id="myRange">
         <p>Current grid size: <span id="demo"></span></p>
     </div>
-
     <div id="container"></div>
-
 </div>
 <script>
 
@@ -64,7 +62,7 @@ container.addEventListener('mouseover', function (e) {
   }  else if (e.target.matches('.divs')) {
       e.target.classList.add('active');
   } button.addEventListener("click", () => {
-      e.target.style.backgroundColor = "transparent";
+      e.target.style.backgroundColor = "white";
     });
 });
 
@@ -84,6 +82,4 @@ createGrid(currentSize);
 </script>
 
 </body>
-
-
 </html>
