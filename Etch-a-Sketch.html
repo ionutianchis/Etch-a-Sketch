@@ -21,7 +21,7 @@
 <script>
 
 let container = document.querySelector("#container");
-let button = document.getElementById("reset");
+let resetButton = document.getElementById("reset");
 let input = document.querySelector('input');
 let currentSize = document.getElementById("myRange").value;
 let slider = document.getElementById("myRange");
@@ -32,6 +32,7 @@ let removeLines = document.getElementById('removeLines');
 let rainbowButtonActive = false;
 let blackButtonActive = false;
 let removeLinesButtonActive = false;
+let resetButtonActive = false;
 
 function createGrid(size){
     container.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
@@ -59,10 +60,13 @@ container.addEventListener('mouseover', function (e) {
     e.target.style.backgroundColor = generateRandomColor();
   } else if (e.target.matches('.divs') && blackButtonActive === true) {
       e.target.style.backgroundColor = 'black';
-  }  else if (e.target.matches('.divs')) {
+  } else if (e.target.matches('.divs') && resetButtonActive == true) {
+    e.target.style.backgroundColor = 'black';
+  } else if (e.target.matches('.divs')) {
       e.target.classList.add('active');
-  } button.addEventListener("click", () => {
+  } resetButton.addEventListener("click", () => {
       e.target.style.backgroundColor = "white";
+      resetButtonActive = true;
     });
 });
 
