@@ -1,25 +1,3 @@
-<!DOCTYPE html>
-<html>
-<link rel="stylesheet" href="style.css">
-<head>
-    <title>Etch-a-Sketch</title>
-    <meta charset="UTF-8"/>
-</head>
-
-<body>
-<div id='wrapper'> 
-    <button id='reset'>Reset</button>
-    <button id='rainbow'>Rainbow</button>
-    <button id='black'>Black</button>
-
-    <div class="slidecontainer">
-      <input type="range" min="1" max="100" value = "8" class="slider" id="myRange">
-        <p>Current grid size: <span id="demo"></span></p>
-    </div>
-    <div id="container"></div>
-</div>
-<script>
-
 let container = document.querySelector("#container");
 let resetButton = document.getElementById("reset");
 let input = document.querySelector('input');
@@ -81,9 +59,3 @@ rainbowButton.addEventListener("click", () => {
 });
 
 createGrid(currentSize);
-
-
-</script>
-
-</body>
-</html>
