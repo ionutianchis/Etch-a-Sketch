@@ -1,12 +1,13 @@
-let container = document.querySelector("#container");
-let resetButton = document.getElementById("reset");
-let input = document.querySelector('input');
-let currentSize = document.getElementById("myRange").value;
-let slider = document.getElementById("myRange");
-let output = document.getElementById("demo");
-let rainbowButton = document.getElementById('rainbow');
-let blackButton = document.getElementById('black');
-let removeLines = document.getElementById('removeLines');
+const container = document.querySelector("#container");
+const resetButton = document.getElementById('reset')
+const input = document.querySelector('input')
+const currentSize = document.getElementById('myRange').value
+const slider = document.getElementById('myRange')
+const output = document.getElementById('demo')
+const rainbowButton = document.getElementById('rainbow')
+const blackButton = document.getElementById('black')
+const git_btn = document.getElementById('git_btn')
+
 let rainbowButtonActive = false;
 let blackButtonActive = false;
 let removeLinesButtonActive = false;
@@ -59,3 +60,7 @@ rainbowButton.addEventListener("click", () => {
 });
 
 createGrid(currentSize);
+
+git_btn.addEventListener('click', () => {
+	window.open('https://github.com/Jonthejon10')
+})
